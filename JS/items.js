@@ -1,4 +1,4 @@
-import { createSingleItem } from "./JS/single-item.js";
+import { createSingleItem } from "./single-item.js";
 
 
 export function createItems(itemsArray) {

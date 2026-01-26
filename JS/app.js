@@ -1,5 +1,5 @@
-import { groceryItems } from "./JS/data.js";
-import { createItems } from "./JS/items.js";
+import { groceryItems } from "./data.js";
+import { createItems } from "./items.js";
 
 let items = groceryItems;
 

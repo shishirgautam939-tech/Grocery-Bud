@@ -1,4 +1,4 @@
-import { editCompleted, removeItem } from "./JS\app.js";
+import { editCompleted, removeItem } from "./app.js";
 
 export function createSingleItem(item) {
   const div = document.createElement("div");
