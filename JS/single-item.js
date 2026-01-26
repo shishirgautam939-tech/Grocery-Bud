@@ -1,4 +1,4 @@
-import { editCompleted } from "JS/app.js";
+import { editCompleted, removeItem } from "./JS\app.js";
 
 export function createSingleItem(item) {
   const div = document.createElement("div");
@@ -17,9 +17,16 @@ export function createSingleItem(item) {
     </button>
   `;
 
+  
   const checkbox = div.querySelector('input[type="checkbox"]');
   checkbox.addEventListener("change", () => {
     editCompleted(item.id);
+  });
+
+ 
+  const removeBtn = div.querySelector(".remove-btn");
+  removeBtn.addEventListener("click", () => {
+    removeItem(item.id);
   });
 
   return div;
