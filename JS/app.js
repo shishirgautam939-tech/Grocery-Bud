@@ -1,8 +1,17 @@
-import { groceryItems } from "./data.js";
 import { createForm } from "./form.js";
 import { createItems } from "./items.js";
 
-let items = groceryItems;
+
+function getLocalStorage() {
+  const list = localStorage.getItem("grocery-list");
+  return list ? JSON.parse(list) : [];
+}
+
+function setLocalStorage(itemsArray) {
+  localStorage.setItem("grocery-list", JSON.stringify(itemsArray));
+}
+
+let items = getLocalStorage();
 let editId = null;
 
 function generateId() {
@@ -24,7 +33,6 @@ function render() {
   app.appendChild(itemsElement);
 }
 
-
 export function addItem(itemName) {
   const newItem = {
     name: itemName,
@@ -33,7 +41,9 @@ export function addItem(itemName) {
   };
 
   items = [...items, newItem];
+  setLocalStorage(items);
   render();
+
   setTimeout(() => alert("Item Added Successfully!"), 0);
 }
 
@@ -44,12 +54,15 @@ export function editCompleted(itemId) {
       : item
   );
 
+  setLocalStorage(items);
   render();
 }
 
 export function removeItem(itemId) {
   items = items.filter((item) => item.id !== itemId);
+  setLocalStorage(items);
   render();
+
   setTimeout(() => alert("Item Deleted Successfully!"), 0);
 }
 
@@ -69,7 +82,9 @@ export function updateItemName(newName) {
   );
 
   editId = null;
+  setLocalStorage(items);
   render();
+
   setTimeout(() => alert("Item Updated Successfully!"), 0);
 }
 
